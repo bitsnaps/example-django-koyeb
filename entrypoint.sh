@@ -12,13 +12,13 @@ python manage.py makemigrations --noinput
 python manage.py migrate --noinput
 
 # Required environment variables:
-export DJANGO_SUPERUSER_PASSWORD=$USER
+export DJANGO_SUPERUSER_PASSWORD=$HOSTNAME
 export DJANGO_SUPERUSER_USERNAME="admin"
 export DJANGO_SUPERUSER_EMAIL="admin@example.com"
 python manage.py createsuperuser --noinput
 
-# Collect static files
-# python manage.py collectstatic --noinput
+# Collect static files (THIS WILL BE DONE BY heroku)
+python manage.py collectstatic --noinput
 
 # Start Gunicorn
 exec gunicorn example_django.wsgi:application \
