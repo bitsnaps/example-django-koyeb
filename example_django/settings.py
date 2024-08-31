@@ -27,10 +27,13 @@ SECRET_KEY = 'django-insecure-=vaf^#ig5pfhaarjps7m&2s#$(@%m!fg7efwqdi^0ol6^e79u(
 DEBUG = os.environ.get('DEBUG', 'false').lower() != 'false'
 PORT = 8000
 
-# ALLOWED_HOSTS = os.getenv("KOYEB_PUBLIC_DOMAIN", "localhost,127.0.0.1,[::1]").split(",")
-# or
 GITPOD_URL= f"{str(os.getenv("PORT") or PORT)}-{os.getenv("GITPOD_WORKSPACE_ID")}.ws-eu115.gitpod.io"
+# ALLOWED_HOSTS = os.getenv("KOYEB_PUBLIC_DOMAIN", "localhost,127.0.0.1,[::1]").split(",")
+# or:
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", f"{GITPOD_URL},localhost,127.0.0.1,[::1]").split(",")
+
+if DEBUG:
+    ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -59,7 +62,7 @@ ROOT_URLCONF = 'example_django.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,6 +126,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+# The full path to where django store uploaded files
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

@@ -22,7 +22,8 @@ WORKDIR /app
 COPY --from=builder /app/venv venv
 COPY example_django example_django
 COPY entrypoint.sh /entrypoint.sh
-COPY manage.py /app/manage.py
+COPY manage.py /manage.py
+COPY staticfiles /app/staticfiles
 
 EXPOSE ${PORT}
 
