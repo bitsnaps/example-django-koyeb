@@ -15,7 +15,7 @@ FROM python:3-alpine AS runner
 ENV VIRTUAL_ENV=/app/venv
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 ENV PORT=8000
-ENV DEBUG=False
+ENV DEBUG=True
 
 WORKDIR /app
 

@@ -3,3 +3,9 @@ Django==4.2
 gunicorn==20.1.0
 sqlparse==0.4.4
 whitenoise==6.4.0
+django-cors-headers
+djangorestframework
+pytz
+psycopg2-binary
+python-dotenv
+rest_framework_simplejwt
