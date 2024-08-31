@@ -20,7 +20,13 @@ WORKDIR /app
 
 COPY --from=builder /app/venv venv
 COPY example_django example_django
+COPY entrypoint.sh /entrypoint.sh
+COPY manage.py /app/manage.py
 
 EXPOSE ${PORT}
 
-CMD gunicorn --bind :${PORT} --workers 2 example_django.wsgi
+# Moved to: entrypoint.sh
+# CMD gunicorn --bind :${PORT} --workers 2 example_django.wsgi
+
+ENTRYPOINT ["/entrypoint.sh"]
+
