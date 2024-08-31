@@ -20,7 +20,10 @@ ENV DEBUG=True
 WORKDIR /app
 
 COPY --from=builder /app/venv venv
-COPY example_django example_django
+COPY backend_lms backend_lms
+COPY api api
+COPY static static
+COPY templates templates
 COPY entrypoint.sh /entrypoint.sh
 COPY manage.py /manage.py
 COPY staticfiles /app/staticfiles
@@ -28,7 +31,7 @@ COPY staticfiles /app/staticfiles
 EXPOSE ${PORT}
 
 # Moved to: entrypoint.sh
-# CMD gunicorn --bind :${PORT} --workers 2 example_django.wsgi
+# CMD gunicorn --bind :${PORT} --workers 2 backend_lms.wsgi
 
 ENTRYPOINT ["/entrypoint.sh"]
 
