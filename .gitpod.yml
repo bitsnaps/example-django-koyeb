@@ -6,6 +6,7 @@
 
 tasks:
   - init: |
+      brew install act
       pip install -r requirements.txt
   - command: docker build . -t k && docker run ks
 

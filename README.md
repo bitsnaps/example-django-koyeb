@@ -1,5 +1,8 @@
 <div align="center">
 
+![build](https://github.com/bitsnaps/example-django-koyeb/actions/workflows/django-test.yml/badge.svg)
+
+
   <a href="https://gitpod.io/from-referrer/">
     <img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Logo" width="auto">
   </a>
