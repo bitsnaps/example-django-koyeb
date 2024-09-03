@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
+import mimetypes
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
-    'api',
+    'api', # this will load "vite_assets"
 ]
 
 
@@ -93,7 +94,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'backend_lms.wsgi.application'
 
 
-# Database
+# Database (We'll use PostgreSQL in production)
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
@@ -138,10 +139,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'public')
+STATIC_URL = 'static/' # This sets the URL prefix for serving static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'static') # This is the directory where Django will collect all static files when you run the collectstatic management command (used for production build).
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    # This setting tells Django where to look for additional static files, besides the static folders in your apps. 
+    # It's a list of directories where Django will search for static files during development and when collecting static files or use {% static %} template tag.
+    # If you're running Django's development server (runserver), it will serve static files from the directories listed here:
+    os.path.join(BASE_DIR, 'dist'),
 ]
 
 # Media
