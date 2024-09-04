@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-925a(n^=1$ib&zm$2&72&q*ciie-vdyt!+xjqk_2bhj1bw#kwo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'false').lower() != 'false'
+DEBUG = False #os.environ.get('DEBUG', 'false').lower() != 'false'
 PORT = 8000 #os.environ.get('PORT', 8000)
 
 GITPOD_URL= f"{str(os.getenv('PORT') or PORT)}-{os.getenv('GITPOD_WORKSPACE_ID')}.ws-eu115.gitpod.io"
