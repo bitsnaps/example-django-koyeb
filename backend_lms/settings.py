@@ -27,9 +27,9 @@ DEBUG = os.environ.get('DEBUG', 'false').lower() != 'false'
 PORT = 8000 #os.environ.get('PORT', 8000)
 
 GITPOD_URL= f"{str(os.getenv('PORT') or PORT)}-{os.getenv('GITPOD_WORKSPACE_ID')}.ws-eu115.gitpod.io"
-# ALLOWED_HOSTS = os.getenv("KOYEB_PUBLIC_DOMAIN", "localhost,127.0.0.1,[::1]").split(",")
+# ALLOWED_HOSTS = os.getenv("KOYEB_PUBLIC_DOMAIN", "localhost,0.0.0.0,[::1]").split(",")
 # or:
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", f"{GITPOD_URL},localhost,127.0.0.1,[::1]").split(",")
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", f"{GITPOD_URL},localhost,0.0.0.0,[::1]").split(",")
 
 if DEBUG:
     ALLOWED_HOSTS = ['*']
