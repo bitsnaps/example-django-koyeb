@@ -23,7 +23,6 @@ COPY --from=builder /app/venv venv
 COPY example_django example_django
 COPY entrypoint.sh /entrypoint.sh
 COPY manage.py /manage.py
-COPY staticfiles /app/staticfiles
 
 EXPOSE ${PORT}
 
