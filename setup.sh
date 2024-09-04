@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Wait for PostgreSQL to start
 # while ! nc -z db 5432; do
