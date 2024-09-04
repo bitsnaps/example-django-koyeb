@@ -10,7 +10,15 @@ python manage.py makemigrations --noinput
 python manage.py migrate --noinput
 
 # Required environment variables:
-export DJANGO_SUPERUSER_PASSWORD=$HOSTNAME
+if [[ $DEBUG ]]
+then
+    export DJANGO_SUPERUSER_PASSWORD="admin"
+else
+    export DJANGO_SUPERUSER_PASSWORD=$HOSTNAME
+fi
+
+echo "DJANGO_SUPERUSER_PASSWORD: $DJANGO_SUPERUSER_PASSWORD"
+
 export DJANGO_SUPERUSER_USERNAME="admin"
 export DJANGO_SUPERUSER_EMAIL="admin@example.com"
 python manage.py createsuperuser --noinput
