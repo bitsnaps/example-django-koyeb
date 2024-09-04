@@ -23,13 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-925a(n^=1$ib&zm$2&72&q*ciie-vdyt!+xjqk_2bhj1bw#kwo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False #os.environ.get('DEBUG', 'false').lower() != 'false'
+DEBUG = os.environ.get('DEBUG', 'false').lower() != 'false'
 PORT = 8000 #os.environ.get('PORT', 8000)
 
-GITPOD_URL= f"{str(os.getenv('PORT') or PORT)}-{os.getenv('GITPOD_WORKSPACE_ID')}.ws-eu115.gitpod.io"
-# ALLOWED_HOSTS = os.getenv("KOYEB_PUBLIC_DOMAIN", "localhost,0.0.0.0,[::1]").split(",")
+# When DEBUG is False, you must explicitly define the hosts/domains that are allowed to serve your app:
+GITPOD_URL= f"{str(os.getenv('PORT') or PORT)}-{os.getenv('GITPOD_WORKSPACE_ID')}.{os.getenv('GITPOD_WORKSPACE_CLUSTER_HOST')}"
+# ALLOWED_HOSTS = os.getenv("KOYEB_PUBLIC_DOMAIN", "localhost,127.0.0.1,0.0.0.0,[::1]").split(",")
 # or:
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", f"{GITPOD_URL},localhost,0.0.0.0,[::1]").split(",")
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", f"{GITPOD_URL},localhost,127.0.0.1,0.0.0.0,[::1]").split(",")
 
 if DEBUG:
     ALLOWED_HOSTS = ['*']
@@ -73,8 +74,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     # 'corsheaders.middleware.CorsMiddleware',
 ]
+
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'backend_lms.urls'
 

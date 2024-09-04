@@ -7,7 +7,7 @@ set -e
 #     --workers 2
 
 # Start uvicorn
-exeec uvicorn backend_lms.asgi:application \
+exec uvicorn backend_lms.asgi:application \
     --host 0.0.0.0 \
     --port ${PORT} \
     --workers 2

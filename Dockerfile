@@ -23,10 +23,10 @@ COPY --from=builder /app/venv venv
 COPY backend_lms backend_lms
 COPY api api
 COPY static static
+COPY dist dist
 COPY templates templates
 COPY entrypoint.sh /entrypoint.sh
 COPY manage.py /manage.py
-COPY staticfiles /app/staticfiles
 
 EXPOSE ${PORT}
 
